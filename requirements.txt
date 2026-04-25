@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+torch
+transformers
+gradio
+pydantic
+python-multipart
+datasets
+accelerate
+bitsandbytes
+PyPDF2
