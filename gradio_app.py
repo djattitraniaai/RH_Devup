@@ -4,10 +4,10 @@ import json
 import PyPDF2
 import pytesseract
 API_URL = "http://127.0.0.1:8000/predict"
-# ⚠️ config chemins (adapter selon ton PC)
+#config chemins (adapter selon ton PC)
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 POPPLER_PATH = r"C:\Users\dell\Downloads\Release-25.12.0-0\poppler-25.12.0\Library\bin"
-# 🔥 OCR pour PDF image
+#OCR pour PDF image
 def read_pdf_ocr(file_path):
     images = convert_from_path(file_path, poppler_path=POPPLER_PATH)
     text = ""
@@ -26,9 +26,9 @@ def read_pdf(file):
     except:
         pass
 
-    # 🔥 si vide → OCR
+    #si vide → OCR
     if not text.strip():
-        print("⚠️ PDF scanné détecté → utilisation OCR...")
+        print("PDF scanné détecté → utilisation OCR...")
         text = read_pdf_ocr(file)
 
     return text
@@ -36,13 +36,13 @@ def analyze_resume(pdf_file,resume_text, job_description):
     """Fonction appelée par Gradio"""
     
     if not job_description:
-        return "❌ Ajoute une description de poste"
+        return "Ajoute une description de poste"
 
-    # 🎯 priorité au PDF
+    #priorité au PDF
     if pdf_file is not None:
         resume_text = read_pdf(pdf_file)
 
-    # ❌ si rien du tout
+    #si rien du tout
     if not resume_text:
         return "❌ Ajoute un CV (texte ou PDF)"
     payload = {
