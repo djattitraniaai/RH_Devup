@@ -9,3 +9,4 @@ datasets
 accelerate
 bitsandbytes
 PyPDF2
+peft
